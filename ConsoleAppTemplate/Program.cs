@@ -11,7 +11,7 @@ namespace ConsoleAppTemplate
 
         private static int GetRemainingDays(int day) => day % 7;
 
-        private static string GetEnglishSefira(int day)
+        public static string GetEnglishSefira(int day)
         {
             if (day is < 1 or > 49)
                 throw new ArgumentException("The day of the Omer can only between 1 and 49, inclusive.");
@@ -21,7 +21,7 @@ namespace ConsoleAppTemplate
             // Less than one week - just days
             if (day < 7) return $"{beginning} {ending}";
             
-            // More than one week - weeks, and possibly days
+            // More than one week - weeks, days, and possibly remaining days
             var week = GetWeeks(day);
             var remainingDays = GetRemainingDays(day);
             var remainingDaysText = remainingDays > 0 ? $" and {"day".ToQuantity(remainingDays, ShowQuantityAs.Words)}" : "";

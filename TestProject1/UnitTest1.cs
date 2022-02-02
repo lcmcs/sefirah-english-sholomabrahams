@@ -1,4 +1,5 @@
 using System;
+using ConsoleAppTemplate;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace TestProject1
@@ -7,34 +8,20 @@ namespace TestProject1
     public class UnitTest1
     {
         [TestMethod]
-        public void TestMethod1()
+        public void RangeTest()
         {
-            Assert.AreEqual(true, 6.IsEven());
+            Assert.ThrowsException<ArgumentException>(() => Program.GetEnglishSefira(-5));
+            Assert.ThrowsException<ArgumentException>(() => Program.GetEnglishSefira(0));
+            Assert.ThrowsException<ArgumentException>(() => Program.GetEnglishSefira(50));
         }
 
         [TestMethod]
-        public void TestMethod2()
+        public void EnglishTest()
         {
-            Assert.AreEqual(true,
-                CoolExtensionMethods.IsEven(6));
-        }
-
-        [TestMethod]
-        public void LangTest()
-        {// 10100 => 01010
-            Assert.AreEqual(5, 20 >> 2);
-        }
-
-        [TestMethod]
-        public void LangTest2()
-        {
-            Assert.AreEqual(Math.Pow(2,31), (UInt32)(Int32.MaxValue) + 1);
-        }
-        [TestMethod]
-        public void LangTest3()
-        {
-            decimal d = 1.23m; // float/double approximately..use decimal for $
-            Assert.AreNotEqual(1.23f, d);
+            Assert.AreEqual(Program.GetEnglishSefira(7), "Today is seven days, which are one week of the Omer.");
+            Assert.AreEqual(Program.GetEnglishSefira(47), "Today is forty-seven days, which are six weeks and five days of the Omer.");
+            Assert.AreEqual(Program.GetEnglishSefira(1), "Today is one day of the Omer.");
+            Assert.AreEqual(Program.GetEnglishSefira(23), "Today is twenty-three days, which are three weeks and two days of the Omer.");
         }
     }
 }
