@@ -7,9 +7,15 @@ namespace ConsoleAppTemplate
 {
     public static class SefiraEnglish
     {
-        private static int GetWeeks(int day) => day / 7;
+        private static int GetWeeks(int day)
+        {
+            return day / 7;
+        }
 
-        private static int GetRemainingDays(int day) => day % 7;
+        private static int GetRemainingDays(int day)
+        {
+            return day % 7;
+        }
 
         public static string GetEnglishSefira(int day)
         {
