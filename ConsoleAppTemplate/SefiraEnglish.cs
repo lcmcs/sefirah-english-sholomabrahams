@@ -26,7 +26,7 @@ namespace ConsoleAppTemplate
             var remainingDaysText =
                 remainingDays > 0 ? $" and {"day".ToQuantity(remainingDays, ShowQuantityAs.Words)}" : "";
             return
-                $"{beginning}, which are {"week".ToQuantity(week, ShowQuantityAs.Words)}{remainingDaysText} {ending}";
+                $"{beginning}, which are {"week".ToQuantity(week, ShowQuantityAs.Words)}{remainingDaysText}, {ending}";
         }
 
         public static void Main()
