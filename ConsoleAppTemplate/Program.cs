@@ -13,19 +13,20 @@ namespace ConsoleAppTemplate
 
         public static string GetEnglishSefira(int day)
         {
-            if (day is < 1 or > 49)
-                throw new ArgumentException("The day of the Omer can only between 1 and 49, inclusive.");
+            if (day is < 1 or > 49) throw new ArgumentOutOfRangeException();
             var beginning = $"Today is {"day".ToQuantity(day, ShowQuantityAs.Words)}";
             const string ending = "of the Omer.";
 
             // Less than one week - just days
             if (day < 7) return $"{beginning} {ending}";
-            
+
             // More than one week - weeks, days, and possibly remaining days
             var week = GetWeeks(day);
             var remainingDays = GetRemainingDays(day);
-            var remainingDaysText = remainingDays > 0 ? $" and {"day".ToQuantity(remainingDays, ShowQuantityAs.Words)}" : "";
-            return $"{beginning}, which are {"week".ToQuantity(week, ShowQuantityAs.Words)}{remainingDaysText} {ending}";
+            var remainingDaysText =
+                remainingDays > 0 ? $" and {"day".ToQuantity(remainingDays, ShowQuantityAs.Words)}" : "";
+            return
+                $"{beginning}, which are {"week".ToQuantity(week, ShowQuantityAs.Words)}{remainingDaysText} {ending}";
         }
 
         public static void Main()
