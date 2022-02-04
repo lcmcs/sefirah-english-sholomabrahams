@@ -5,7 +5,7 @@ using Humanizer;
 
 namespace ConsoleAppTemplate
 {
-    public static class Program
+    public static class SefiraEnglish
     {
         private static int GetWeeks(int day) => day / 7;
 
